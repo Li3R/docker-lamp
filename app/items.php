@@ -24,7 +24,8 @@ include('header.php');
 
     <?php
     
-    $sql = "SELECT id, izena, kategoria, erabiltzaile_id, portada_fitxategia FROM elementuak ORDER BY izena";
+    // --- 1. ALDAKETA: 'prezioa' eta 'stocka' gehitu SQL kontsultara ---
+    $sql = "SELECT id, izena, kategoria, erabiltzaile_id, portada_fitxategia, prezioa, stocka FROM elementuak ORDER BY izena";
     $resultado = $conn->query($sql);
     
     $logged_user_id = $_SESSION['user_id']; 
@@ -46,6 +47,16 @@ include('header.php');
                 <div> 
                     <strong><a href="show_item?item=<?php echo $item['id']; ?>"><?php echo htmlspecialchars($item['izena']); ?></a></strong><br>
                     <small style='color: #555;'>Kategoria: <?php echo htmlspecialchars($item['kategoria']); ?></small>
+                    
+                    <br>
+                    <small style='color: #333; font-weight: bold;'>
+                        Prezioa: <?php echo htmlspecialchars(number_format($item['prezioa'], 2, ',', '.')); ?> €
+                    </small>
+                    <br>
+                    <small style='color: #333;'>
+                        Stock-ean: <?php echo htmlspecialchars($item['stocka']); ?> unitate
+                    </small>
+                    
                 </div>
             </div>
             
