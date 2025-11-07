@@ -32,7 +32,7 @@ function validateRegisterForm() {
     passError.innerHTML = "";
 
     let isValid = true;
-    const nombreRegex = /^[a-zA-Z\s]+$/;
+    const nombreRegex = /^[\p{L}\s]+$/u;
     if (!nombreRegex.test(nombre)) {
         nombreError.innerHTML = "Izenak letrak eta hutsuneak soilik izan ditzake.";
         isValid = false;
@@ -89,7 +89,7 @@ function validateModifyForm() {
     passRepError.innerHTML = "";
 
     let isValid = true;
-    const nombreRegex = /^[a-zA-Z\s]+$/;
+    const nombreRegex = /^[\p{L}\s]+$/u;
     if (!nombreRegex.test(nombre)) {
         nombreError.innerHTML = "Izenak letrak eta hutsuneak soilik izan ditzake.";
         isValid = false;

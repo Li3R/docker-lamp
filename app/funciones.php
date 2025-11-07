@@ -16,7 +16,7 @@ function validarFecha($fecha, $formato = 'Y-m-d') {
 function balioztatuErabiltzaileDatuak($data, $egiaztatuPasahitza = true) {
     $errores = [];
 
-    if (!preg_match("/^[a-zA-Z\s]+$/", $data['izen_abizenak'])) { $errores['nombre'] = "Izenak letrak eta hutsuneak soilik izan ditzake."; }
+    if (!preg_match("/^[\p{L}\s]+$/u", $data['izen_abizenak'])) { $errores['nombre'] = "Izenak letrak eta hutsuneak soilik izan ditzake."; }
     if (!validarNIF($data['nan'])) { $errores['nan'] = "NANa ez da zuzena."; }
     if (!preg_match("/^[0-9]{9}$/", $data['telefonoa'])) { $errores['telefono'] = "Telefonoak 9 zenbaki zehatz izan behar ditu."; }
     if (!validarFecha($data['jaiotze_data'])) { $errores['fecha'] = "Jaiotze data ez da zuzena."; }
