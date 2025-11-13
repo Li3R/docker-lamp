@@ -7,7 +7,7 @@ $csrf_token = $_SESSION['csrf_token'];
 <!DOCTYPE html>
 <html lang="eu"> 
 <head>
-    <meta charset="UTF-R">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nire Web Sistema</title> 
     <style>

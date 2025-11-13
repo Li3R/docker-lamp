@@ -1,15 +1,25 @@
 <?php
-
+header('Content-Type: text/html; charset=UTF-8');
 $cookie_secure = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on');
 
-session_set_cookie_params([
-    'lifetime' => 0,
-    'path' => '/',
-    'domain' => '', 
-    'secure' => $cookie_secure,
-    'httponly' => true,
-    'samesite' => 'Strict'
-]);
+
+
+
+ini_set('session.cookie_httponly', 1);
+
+
+$cookieParams = session_get_cookie_params();
+
+
+session_set_cookie_params(
+    $cookieParams['lifetime'],
+    $cookieParams['path'] . '; samesite=Strict', 
+    $cookieParams['domain'],
+    $cookie_secure,
+    true 
+);
+
+
 
 session_start();
 
